@@ -1,0 +1,6 @@
+{
+  "name": "FortunesAi",
+  "description": "Multi-modal AI chat application supporting xAI and other models.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
