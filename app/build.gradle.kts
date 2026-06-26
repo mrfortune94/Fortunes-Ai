@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-  namespace = "com.fortunesai"
+  namespace = "com.aistudio.omnichat.mrxqpt"
   compileSdk { version = release(36) { minorApiLevel = 1 } }
 
   defaultConfig {
