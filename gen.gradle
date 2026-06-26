@@ -1,0 +1,3 @@
+task generateKeystore(type: Exec) {
+    commandLine 'keytool', '-genkeypair', '-v', '-keystore', 'FortuneAi.jks', '-alias', 'FortuneAi', '-keyalg', 'RSA', '-keysize', '2048', '-validity', '10000', '-storepass', 'password', '-keypass', 'password', '-dname', 'CN=FortuneAi, OU=Generic, O=Generic, L=Any, S=Any, C=US'
+}
