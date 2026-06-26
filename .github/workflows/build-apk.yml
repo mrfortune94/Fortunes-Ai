@@ -27,13 +27,17 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Generate debug keystore and dummy google-services.json
+      - name: Generate keystores and dummy google-services.json
         run: |
           if [ -f debug.keystore.base64 ]; then
             base64 -d debug.keystore.base64 > debug.keystore
           else
             keytool -genkeypair -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
           fi
+          
+          # Generate the release keystore in the app directory
+          keytool -genkeypair -v -keystore app/FortuneAi.jks -alias FortuneAi -keyalg RSA -keysize 2048 -validity 10000 -storepass password -keypass password -dname "CN=FortuneAi, OU=Generic, O=Generic, L=Any, S=Any, C=US"
+          
           # Create a dummy google-services.json if it doesn't exist
           echo '{"project_info":{"project_number":"1","project_id":"dummy","storage_bucket":"dummy"},"client":[{"client_info":{"mobilesdk_app_id":"1:1:android:1","android_client_info":{"package_name":"com.aistudio.omnichat.mrxqpt"}},"oauth_client":[],"api_key":[{"current_key":"dummy"}],"services":{"appinvite_service":{"other_platform_oauth_client":[]}}}]}' > app/google-services.json
 
